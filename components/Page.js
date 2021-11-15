@@ -1,5 +1,6 @@
 class Page {
-    constructor() {
+    constructor(globalData) {
+        this.globalData = globalData;
         this.title = 'TODO';
         this.baseURL = 'http://localhost:3000/';
         this.route = '';
@@ -11,11 +12,11 @@ class Page {
         return this.baseURL + this.route + (this.route === '' ? '' : '/');
     }
 
-    async bodyHTML() {
+    bodyHTML() {
         return `Page content`;
     }
 
-    async render() {
+    render() {
         return `<!DOCTYPE html>
                 <html lang="en">
 
@@ -39,7 +40,7 @@ class Page {
                 </head>
 
                 <body>
-                    ${await this.bodyHTML()}
+                    ${this.bodyHTML()}
                 </body>
 
                 </html>`;
